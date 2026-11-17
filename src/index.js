@@ -15,9 +15,14 @@ app['use'](a3b({
     'limit': '100mb',
     'extended': !![]
 })), app['use'](a3c());
-const port = process['env']['PORT'] || 0x1f91;
-a3d(), app['use']('/api/v1/rent/user', router), app['use']('/api/v1/rent/listing', propertyRouter), app['use']('/api/v1/rent/user/booking', bookingRouter), app['listen'](port, () => {
-    console['log']('App\x20running\x20on\x20port:\x20' + port);
+const PORT = process.env.PORT || 5000;
+
+app.use('/api/v1/rent/user', router);
+app.use('/api/v1/rent/listing', propertyRouter);
+app.use('/api/v1/rent/user/booking', bookingRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 const allowedOrigins = [process.env.ORIGIN_ACCESS_URL, "http://localhost:5173", "http://localhost:3000"];
